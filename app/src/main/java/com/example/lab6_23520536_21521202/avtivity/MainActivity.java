@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (navHostFragment != null) {
             NavController navController = navHostFragment.getNavController();
+
+            // Xóa sạch các Listener rườm rà.
+            // CHỈ CẦN DUY NHẤT 1 DÒNG NÀY ĐỂ THANH MENU TỰ ĐỘNG CHẠY 100%
             NavigationUI.setupWithNavController(bottomNav, navController);
         }
     }

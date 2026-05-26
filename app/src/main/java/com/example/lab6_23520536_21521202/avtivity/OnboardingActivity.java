@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.lab6_23520536_21521202.R;
-import com.example.lab6_23520536_21521202.auth.LoginActivity;
 import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,8 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // LUÔN LUÔN HIỂN THỊ MÀN HÌNH NÀY KHI MỞ APP (Đã xóa SharedPreferences)
         setContentView(R.layout.activity_onboarding);
 
         viewPager = findViewById(R.id.viewPager);
@@ -35,7 +36,6 @@ public class OnboardingActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         tvSkip = findViewById(R.id.tvSkip);
 
-        // Dữ liệu 4 Slide giới thiệu
         List<OnboardingItemEmoji> items = new ArrayList<>();
         items.add(new OnboardingItemEmoji("⏰", "Đặt lịch dễ dàng", "Chủ động chọn ngày, giờ và bác sĩ khám bệnh mà không cần chờ đợi."));
         items.add(new OnboardingItemEmoji("💳", "Thanh toán tiện lợi", "Hỗ trợ nhiều phương thức thanh toán trực tuyến an toàn và nhanh chóng."));
@@ -44,18 +44,14 @@ public class OnboardingActivity extends AppCompatActivity {
 
         viewPager.setAdapter(new OnboardingAdapterEmoji(items));
 
-        // Khởi tạo chấm tròn chỉ báo
         setupIndicators(items.size());
         setCurrentIndicator(0);
 
-        // Bắt sự kiện vuốt qua lại
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 setCurrentIndicator(position);
-
-                // Đổi chữ nút khi đến slide cuối
                 if (position == items.size() - 1) {
                     btnNext.setText("BẮT ĐẦU");
                 } else {
@@ -64,20 +60,17 @@ public class OnboardingActivity extends AppCompatActivity {
             }
         });
 
-        // Nút Tiếp theo / Bắt đầu
         btnNext.setOnClickListener(v -> {
             if (viewPager.getCurrentItem() + 1 < items.size()) {
                 viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
             } else {
-                navigateToLogin();
+                navigateToMain();
             }
         });
 
-        // Nút Bỏ qua
-        tvSkip.setOnClickListener(v -> navigateToLogin());
+        tvSkip.setOnClickListener(v -> navigateToMain());
     }
 
-    // Vẽ các chấm tròn (○)
     private void setupIndicators(int count) {
         for (int i = 0; i < count; i++) {
             TextView textView = new TextView(this);
@@ -89,13 +82,12 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    // Tô đậm chấm tròn hiện tại (●)
     private void setCurrentIndicator(int index) {
         for (int i = 0; i < layoutIndicators.getChildCount(); i++) {
             TextView textView = (TextView) layoutIndicators.getChildAt(i);
             if (i == index) {
                 textView.setText("●");
-                textView.setTextColor(Color.parseColor("#388E3C")); // Màu xanh lá
+                textView.setTextColor(Color.parseColor("#388E3C"));
             } else {
                 textView.setText("○");
                 textView.setTextColor(Color.GRAY);
@@ -103,18 +95,12 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    // Chuyển sang màn Login
-    private void navigateToLogin() {
-        startActivity(new Intent(this, LoginActivity.class));
+    private void navigateToMain() {
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }
 
-// ==========================================
-// CÁC LỚP HỖ TRỢ (Gộp chung vào 1 file Java)
-// ==========================================
-
-// 1. DATA CLASS (Cấu trúc 1 slide)
 class OnboardingItemEmoji {
     String emoji, title, description;
     public OnboardingItemEmoji(String emoji, String title, String description) {
@@ -124,13 +110,9 @@ class OnboardingItemEmoji {
     }
 }
 
-// 2. ADAPTER (Bộ chuyển đổi dữ liệu lên giao diện)
 class OnboardingAdapterEmoji extends RecyclerView.Adapter<OnboardingAdapterEmoji.ViewHolder> {
     List<OnboardingItemEmoji> items;
-
-    public OnboardingAdapterEmoji(List<OnboardingItemEmoji> items) {
-        this.items = items;
-    }
+    public OnboardingAdapterEmoji(List<OnboardingItemEmoji> items) { this.items = items; }
 
     @NonNull
     @Override
@@ -146,9 +128,7 @@ class OnboardingAdapterEmoji extends RecyclerView.Adapter<OnboardingAdapterEmoji
     }
 
     @Override
-    public int getItemCount() {
-        return items.size();
-    }
+    public int getItemCount() { return items.size(); }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvEmoji, tvTitle, tvDescription;

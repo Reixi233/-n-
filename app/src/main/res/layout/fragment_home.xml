@@ -48,7 +48,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#BBDEFB"
+            android:src="@drawable/anh_benh_vien_175"
             android:scaleType="centerCrop" />
 
         <GridLayout
@@ -63,44 +63,44 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hỗ trợ\nđặt khám" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_lich_su" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💳" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lịch sử\nthanh toán" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_tra_cuu_hoa_don" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🧾" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tra cứu\nhoá đơn" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_tra_cuu_kq" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔍" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tra cứu KQ\nkhám bệnh" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_quet_qr" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📱" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Quét mã\nQR" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_lich_su_hien_mau" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🩸" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lịch sử\nhiến máu" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_ho_so" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📁" android:textSize="36sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kết quả\nkhám" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hồ Sơ\nCá Nhân" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
+            <LinearLayout android:id="@+id/btn_tra_cuu_ban_do" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🗺️" android:textSize="36sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tra cứu\nbản đồ" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔢" android:textSize="36sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tra cứu\nsố thứ tự" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
+            <LinearLayout android:id="@+id/btn_cai_dat" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:padding="12dp" android:gravity="center" android:clickable="true" android:foreground="?attr/selectableItemBackground">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️" android:textSize="36sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cài đặt\nHệ thống" android:textSize="13sp" android:textAlignment="center" android:layout_marginTop="8dp" android:textColor="#333333"/>
             </LinearLayout>
         </GridLayout>
 

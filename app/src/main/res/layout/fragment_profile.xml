@@ -1,32 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="#F8F9FA"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hồ Sơ Bệnh Nhân"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
+        android:layout_height="220dp"
+        android:background="#388E3C"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_tao_ho_so_moi"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="2dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            app:cornerRadius="50dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Đang tải..."
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã BN: BN-2024-99"
+            android:textColor="#E8F5E9"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tạo Hồ Sơ Mới"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="-30dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Danh sách hồ sơ sẽ hiển thị ở đây"
-        android:textSize="16sp"
-        android:textColor="#666666"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="20dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thông tin cá nhân"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+                <TextView android:layout_width="120dp" android:layout_height="wrap_content" android:text="Ngày sinh" android:textColor="#666666" android:textSize="16sp" />
+                <TextView android:id="@+id/tv_profile_dob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đang tải..." android:textColor="#333333" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+                <TextView android:layout_width="120dp" android:layout_height="wrap_content" android:text="Giới tính" android:textColor="#666666" android:textSize="16sp" />
+                <TextView android:id="@+id/tv_profile_gender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đang tải..." android:textColor="#333333" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+                <TextView android:layout_width="120dp" android:layout_height="wrap_content" android:text="Số điện thoại" android:textColor="#666666" android:textSize="16sp" />
+                <TextView android:id="@+id/tv_profile_phone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đang tải..." android:textColor="#333333" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+                <TextView android:layout_width="120dp" android:layout_height="wrap_content" android:text="Số BHYT" android:textColor="#666666" android:textSize="16sp" />
+                <TextView android:id="@+id/tv_profile_bhyt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đang tải..." android:textColor="#333333" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+                <TextView android:layout_width="120dp" android:layout_height="wrap_content" android:text="Địa chỉ" android:textColor="#666666" android:textSize="16sp" />
+                <TextView android:id="@+id/tv_profile_address" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Đang tải..." android:textColor="#333333" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="24dp"
+                android:text="CHỈNH SỬA THÔNG TIN"
+                android:textColor="#388E3C"
+                app:strokeColor="#388E3C" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#D32F2F"
+                android:text="ĐĂNG XUẤT"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

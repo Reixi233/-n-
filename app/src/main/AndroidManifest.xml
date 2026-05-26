@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,29 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab6_23520536_21521202">
 
-        <!-- Splash -->
         <activity
-            android:name=".avtivity.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Splash">
+            android:name=".avtivity.OnboardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Onboarding -->
-        <activity android:name=".avtivity.OnboardingActivity" />
+        <activity
+            android:name=".avtivity.SplashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Splash" />
 
-        <!-- Login -->
-        <activity android:name=".auth.LoginActivity" />
+        <activity android:name=".auth.LoginActivity" android:exported="false" />
 
-        <!-- Main -->
-        <activity android:name=".avtivity.MainActivity" />
-        <activity android:name=".avtivity.SelectDepartmentActivity" />
-        <activity android:name=".avtivity.SelectDateTimeActivity" />
-        <activity android:name=".avtivity.SelectProfileActivity" />
-        <activity android:name=".avtivity.PaymentActivity" />
+        <activity android:name=".avtivity.MainActivity" android:exported="false" />
+        <activity android:name=".avtivity.SelectDepartmentActivity" android:exported="false" />
+        <activity android:name=".avtivity.SelectDateTimeActivity" android:exported="false" />
+        <activity android:name=".avtivity.SelectProfileActivity" android:exported="false" />
+        <activity android:name=".avtivity.PaymentActivity" android:exported="false" />
+        <activity android:name=".avtivity.QrScannerActivity" android:exported="false" />
     </application>
 
 </manifest>

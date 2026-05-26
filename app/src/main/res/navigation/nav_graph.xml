@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.example.lab6_23520536_21521202.fragment.HomeFragment"
         android:label="Trang chủ" />
 
     <fragment
-        android:id="@+id/bookingFragment"
-        android:name="com.example.lab6_23520536_21521202.fragment.BookingFragment"
-        android:label="Đặt Khám" />
+        android:id="@+id/nav_booking"
+        android:name="com.example.lab6_23520536_21521202.BookingFragment"
+        android:label="Đặt Khám" >
+        <action
+            android:id="@+id/action_nav_booking_to_departmentFragment"
+            app:destination="@id/departmentFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/departmentFragment"
         android:name="com.example.lab6_23520536_21521202.fragment.DepartmentFragment"
-        android:label="Chọn Khoa" />
+        android:label="Chọn Khoa" >
+        <action
+            android:id="@+id/action_departmentFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/serviceFragment"
         android:name="com.example.lab6_23520536_21521202.fragment.ServiceFragment"
-        android:label="Chọn Loại Khám" />
+        android:label="Chọn Dịch Vụ" />
 
-    <!-- Actions -->
-    <action
-        android:id="@+id/action_nav_booking_to_departmentFragment"
-        app:destination="@id/departmentFragment" />
+    <fragment
+        android:id="@+id/nav_appointment"
+        android:name="com.example.lab6_23520536_21521202.AppointmentFragment"
+        android:label="Lịch Khám" />
 
-    <action
-        android:id="@+id/action_departmentFragment_to_serviceFragment"
-        app:destination="@id/serviceFragment" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.lab6_23520536_21521202.fragment.ProfileFragment"
+        android:label="Hồ Sơ" />
 
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.lab6_23520536_21521202.fragment.AccountFragment"
+        android:label="Tài Khoản" />
 </navigation>

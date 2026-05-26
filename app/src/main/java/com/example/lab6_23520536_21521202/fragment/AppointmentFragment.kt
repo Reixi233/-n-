@@ -42,6 +42,9 @@ class AppointmentFragment : Fragment() {
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
+                // 🛡️ LƯỚI AN TOÀN 1: Nếu người dùng đã vuốt sang tab khác (binding bị hủy) thì ngắt lệnh luôn, không vẽ giao diện nữa.
+                if (_binding == null) return@addOnSuccessListener
+
                 if (documents.isEmpty) {
                     binding.emptyView.visibility = View.VISIBLE
                     binding.rvAppointments.visibility = View.GONE
@@ -53,7 +56,10 @@ class AppointmentFragment : Fragment() {
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Lỗi: ${e.message}", Toast.LENGTH_LONG).show()
+                // 🛡️ LƯỚI AN TOÀN 2: Dùng biến context thay vì requireContext() để tránh văng app nếu màn hình đã đóng khi bị lỗi mạng.
+                if (context != null) {
+                    Toast.makeText(context, "Lỗi: ${e.message}", Toast.LENGTH_LONG).show()
+                }
             }
     }
 
