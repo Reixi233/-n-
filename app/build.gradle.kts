@@ -27,7 +27,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    // Fix Kotlin JVM target
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -52,16 +51,21 @@ dependencies {
 
     // Google Sign In
     implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+    // Facebook Login
+    implementation("com.facebook.android:facebook-android-sdk:17.0.0")
+
+    // Gemini AI
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
-    // Thư viện CameraX (Dùng để mở và điều khiển Camera)
+
+    // CameraX & ML Kit
     val camerax_version = "1.3.1"
     implementation("androidx.camera:camera-core:$camerax_version")
     implementation("androidx.camera:camera-camera2:$camerax_version")
     implementation("androidx.camera:camera-lifecycle:$camerax_version")
     implementation("androidx.camera:camera-view:$camerax_version")
-
-    // Thư viện Google ML Kit (Dùng để nhận diện và đọc mã QR/Barcode)
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
     implementation("com.google.guava:guava:32.1.3-android")
+
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }

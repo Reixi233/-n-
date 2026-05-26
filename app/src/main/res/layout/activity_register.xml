@@ -21,17 +21,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medical App"
+            android:text="Đăng Ký Tài Khoản"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập để tiếp tục"
-            android:textSize="16sp"
-            android:textColor="#666666"
+            android:textColor="#388E3C"
             android:layout_marginBottom="40dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +34,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
+                android:id="@+id/et_register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -51,47 +44,31 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mật khẩu"
+                android:hint="Mật khẩu (ít nhất 6 ký tự)"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng Nhập"
-            android:layout_marginBottom="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập bằng Google"
-            android:backgroundTint="#DB4437"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập bằng Facebook"
-            android:backgroundTint="#1877F2"
+            android:text="Đăng Ký"
+            android:backgroundTint="#388E3C"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="24dp" />
 
         <TextView
-            android:id="@+id/tv_register"
+            android:id="@+id/tv_back_to_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chưa có tài khoản? Đăng ký ngay"
+            android:text="Đã có tài khoản? Đăng nhập"
             android:textColor="#2196F3"
             android:textStyle="bold"
             android:clickable="true"

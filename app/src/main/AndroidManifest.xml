@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab6_23520536_21521202">
 
+        <!-- Facebook Config -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="1136667892271039" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="22c156a65bfc0139cb72bd12201b7fa1" />
+
+        <!-- Màn hình khởi động -->
         <activity
             android:name=".avtivity.OnboardingActivity"
             android:exported="true">
@@ -20,19 +32,16 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".avtivity.SplashActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Splash" />
-
+        <!-- Các Activity khác -->
         <activity android:name=".auth.LoginActivity" android:exported="false" />
-
+        <activity android:name=".auth.RegisterActivity" android:exported="false" />
         <activity android:name=".avtivity.MainActivity" android:exported="false" />
         <activity android:name=".avtivity.SelectDepartmentActivity" android:exported="false" />
         <activity android:name=".avtivity.SelectDateTimeActivity" android:exported="false" />
         <activity android:name=".avtivity.SelectProfileActivity" android:exported="false" />
         <activity android:name=".avtivity.PaymentActivity" android:exported="false" />
         <activity android:name=".avtivity.QrScannerActivity" android:exported="false" />
+
     </application>
 
 </manifest>

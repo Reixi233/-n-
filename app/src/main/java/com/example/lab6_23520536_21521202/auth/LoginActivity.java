@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.lab6_23520536_21521202.databinding.ActivityLoginBinding;
+import com.example.lab6_23520536_21521202.avtivity.MainActivity;           // ← Import này
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
@@ -16,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private GoogleSignInHelper googleSignInHelper;
+    private FacebookSignInHelper facebookSignInHelper;
     private FirebaseAuth mAuth;
     private static final int RC_SIGN_IN = 9001;
 
@@ -23,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // KHỞI TẠO FIREBASE - RẤT QUAN TRỌNG
         FirebaseApp.initializeApp(this);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         googleSignInHelper = new GoogleSignInHelper(this);
+        facebookSignInHelper = new FacebookSignInHelper(this);
 
         setupClickListeners();
         checkCurrentUser();
@@ -44,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
+        // Đăng nhập Email
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.etEmail.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
@@ -59,48 +62,64 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                             goToMainActivity();
                         } else {
-                            Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Đăng nhập thất bại: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
         });
 
+        // Google Login
         binding.btnGoogle.setOnClickListener(v -> {
             Intent signInIntent = googleSignInHelper.getSignInIntent();
             startActivityForResult(signInIntent, RC_SIGN_IN);
+        });
+
+        // Facebook Login
+        binding.btnFacebook.setOnClickListener(v -> {
+            facebookSignInHelper.signIn();
+        });
+
+        // Chuyển sang Đăng ký
+        binding.tvRegister.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegisterActivity.class));
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        facebookSignInHelper.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInAccount account = GoogleSignInHelper.getAccountFromIntent(data);
             if (account != null) {
-                // SỬA LỖI Ở ĐÂY: Phải nộp "vé" Google (idToken) cho Firebase
                 firebaseAuthWithGoogle(account.getIdToken());
-            } else {
-                Toast.makeText(this, "Không lấy được tài khoản Google!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    // HÀM MỚI BỔ SUNG: Dùng Token của Google để đăng nhập vào hệ thống Firebase
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        signInWithCredential(credential, "Google");
+    }
+
+    public void firebaseAuthWithFacebook(AuthCredential credential) {
+        signInWithCredential(credential, "Facebook");
+    }
+
+    private void signInWithCredential(AuthCredential credential, String provider) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Firebase đã ghi nhận thành công, bây giờ mới chuyển trang
-                        Toast.makeText(this, "Đăng nhập Firebase thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, provider + " đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                         goToMainActivity();
                     } else {
-                        Toast.makeText(this, "Lỗi đăng nhập Firebase: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Lỗi " + provider + ": " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
     private void goToMainActivity() {
-        Intent intent = new Intent(this, com.example.lab6_23520536_21521202.avtivity.MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
